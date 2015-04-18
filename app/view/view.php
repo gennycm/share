@@ -13,6 +13,7 @@ class View{
 						<html>
 						<head>
 							<title> SYF | ".$this->action."</title>
+							<meta charset='UTF-8'> 
 							  <link rel='stylesheet' type='text/css' href='../app/css/bootstrap.min.css'>
 							  <link rel='stylesheet' type='text/css' href='../app/css/font-awesome.min.css'>
 							  <link rel='stylesheet' type='text/css' href='../app/css/templatemo_misc.css'>
@@ -50,7 +51,7 @@ class View{
 		    case "Inicio":
 				$listElements = "<li class='home'><a class='active' href='#'>Inicio</a></li>
 					            <li class='portfolio'><a href='#'>Mis Archivos</a></li>
-					            <li class='contact'><a href='#'>Amigos</a></li>
+					            <li class='contact'><a href='../UserController/listFriends'>Amigos</a></li>
 	            	            <li class='about'><a href='#about'>Cerrar sesión</a></li>";
 		        break;
 		    case "Mis archivos":
