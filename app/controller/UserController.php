@@ -16,7 +16,7 @@ class UserController extends Controller{
         "deleteUser"=>array('admin'),
         "login"=>array('admin','public'),
         "loginUser"=>array('admin','public'),
-        );
+        "inicio"=>array('admin'));
     }
     
 
@@ -59,8 +59,10 @@ class UserController extends Controller{
             $user = new SystemUser();
             $user->login($userData,$appUser->getTableName());
             if ($user->isLogged) {
-                $this->currentUser = $user; 
-                header("Loc")             
+                $this->currentUser = $user;
+                $userHome = new UserHome("Inicio");
+                echo $userHome->showUserHome($this->currentUser->loggedUser);
+               // header("Location: inicio");            
             }else{
                 $message = "El usuario o contraseña es incorrecta o no existe :c";
                 echo "<script type='text/javascript'>
@@ -71,9 +73,10 @@ class UserController extends Controller{
         }
     }
 
-    public function showUserHome(){
+    public function inicio(){
         $userHome = new UserHome("Inicio");
-        echo $userHome->showUserHome($currentUser->loggedUser);
+        var_dump($this->currentUser->loggedUser);
+        echo $userHome->showUserHome($this->currentUser->loggedUser);
     }
 
 
