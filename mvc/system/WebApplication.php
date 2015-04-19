@@ -33,7 +33,6 @@ class WebApplication{
                 $controller->setParams($this->urlMgr->getParams());
                 $controller->runAction($action);   
 
-<<<<<<< HEAD
 	 	}else{
 		 	if($this->urlMgr->getController() != '' && $this->urlMgr->getAction() == ''){
 	 			header('Location: UserController/login');
@@ -43,12 +42,6 @@ class WebApplication{
 
 
 	 	}
-	}
-=======
-        }else{
-                header('Location: UserController/register');
-        }
     }         
->>>>>>> b392fa2b8a8315ac9cc7d78027101d4d24fec50c
 }
 ?>
