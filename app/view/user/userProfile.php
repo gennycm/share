@@ -7,65 +7,95 @@ class UserProfile{
     }
 
     function showProfile(){
-        $profileData = 
-//        "<form id='' method='POST' action='../UserController/editProfile'>
-//                <label>Nombre:</label> <input type='text' name='name' value=''><br>
-//                <label>Usuario:</label> <input type='text' name='username' value=''><br>
-//                <label>E-mail:</label> <input type='text' name='email' value=''><br>
-//                <input type='hidden' name='operation' value='ai'>
-//                <input type='submit' value='Editar'>
-//        </form>";
-        
+    $profileData = 
+        "<div id='contact' class='section-content'>
+            <div class='row'>
+                <div class='col-md-12'>
+                    <div class='section-title'>
+                            <h2>Perfil</h2>
+                    </div> 
+                </div> 
+            </div>
+            <div class='row contact-form'>
+                <form id='form_register' action='../UserController/editarPerfil' method='POST'>
+                    <div class='col-md-12'>
+                        <input type='hidden' value='". $_SESSION["id_user"] ."' name='id_user' id='id_user'/>
+                        <label>Nombre: ".$_SESSION["name"]."</label>
+                    </div> 
+                    <div class='col-md-12'>
+                        <label>Email: ".$_SESSION["email"]."</label>
+                    </div>
+                    <div class='col-md-12'>
+                        <label>Nombre de usuario: ".$_SESSION["username"]."</label>
+                    </div>
+                    <div class='col-md-4'>
+                        <div class='submit-btn'>
+                            <input type='submit' class='submit-btn' value='Editar'/>
+                        </div> 
+                    </div> 
+                </form>
+            </div>
+	</div>";
+
+    return $this->view->getHTMLstuff().$this->view->getHeader(). $this->view->getSideBar("Perfil"). $this->view->getContainerStart().$profileData.$this->view->getContainerEnd().$this->view->getFooter().$this->view->getHTMLclosure();
+    }
+    
+    function editUserProfile(){
+     $profileData = 
         "<div id='contact' class='section-content'>
             <div class='row'>
                     <div class='col-md-12'>
                             <div class='section-title'>
-                                    <h2>Contact Us</h2>
+                                    <h2>Perfil</h2>
                             </div> 
                     </div> 
             </div>
-            <div class='row'>
-                    <div class='col-md-12'>
-                            <div class='map-holder'>
-                                    <div class='google-map-canvas' id='map-canvas'>
-            </div>
-                            </div> <!-- /.map-holder -->
-                    </div> <!-- /.col-md-12 -->
-            </div> <!-- /.row -->
             <div class='row contact-form'>
-                    <div class='col-md-4'>
-                            <label for='name-id' class='required'>Name:</label>
-                            <input name='name-id' type='text' id='name-id' maxlength='40'>
-                    </div> <!-- /.col-md-4 -->
-                    <div class='col-md-4'>
-                            <label for='email-id' class='required'>Email:</label>
-                            <input name='email-id' type='text' id='email-id' maxlength='40'>
-                    </div> <!-- /.col-md-4 -->
-                    <div class='col-md-4'>
-                            <label for='subject-id'>Subject:</label>
-                            <input name='subject-id' type='text' id='subject-id' maxlength='60'>
-                    </div> <!-- /.col-md-4 -->
                     <div class='col-md-12'>
-                            <label for='message-id' class='required'>Message:</label>
-                            <textarea name='message-id' id='message-id' rows='6'></textarea>
-                    </div> <!-- /.col-md-12 -->
+                    <form id='form_register' action='../UserController/saveProfile' method='POST'>
+                    <input type='hidden' value='".$_SESSION["id_user"]."' name='id_user' id='id_user'/>
+                            <label>Nombre:</label>
+                            <input name='name' type='text' id='name' maxlength='20' value='".$_SESSION["name"]."'>
+                    </div> 
                     <div class='col-md-12'>
+                            <label>Email:</label>
+                            <input name='email' type='text' id='email' maxlength='20' value='".$_SESSION["email"]."'>
+                    </div> 
+                    <div class='col-md-12'>
+                            <label>Nombre de usuario:</label>
+                            <input name='username' type='text' id='username' maxlength='20' value='".$_SESSION["username"]."'>
+                    </div> 
+                    
+                    <!--
+                    <div class='col-md-4'>
+                            <label for='password'>Contraseña actual:</label>
+                            <input name='oldPassword' type='text' id='oldPassword' maxlength='20'>
+                    </div> 
+                    -->
+                    
+                    <div class='col-md-4'>
+                            <label for='password'>Contraseña nueva:</label>
+                            <input name='password' type='text' id='password' maxlength='20'>
+                    </div> 
+                    
+                    <!--
+                    <div class='col-md-4'>
+                            <label for='password'>Confirmar contraseña:</label>
+                            <input name='repeatPassword' type='text' id='repeatPassword' maxlength='20'>
+                    </div> 
+                    -->
+                    
+                    <div class='col-md-4'>
                             <div class='submit-btn'>
-                                    <a href='#' class='largeButton contactBgColor'>Send Message</a>
-                            </div> <!-- /.submit-btn -->
-                    </div> <!-- /.col-md-12 -->
+                                    <!--<a href='#' class='largeButton contactBgColor'>Send Message</a>-->
+                                    <input type='submit' class='submit-btn' value='Guardar'>
+                            </div> 
+                    </form>
+                    </div> 
             </div>
 	</div>";
 
-    //return $this->view->getHTMLstuff().$this->view->getHeader(). $profileData. $this->view->getFooter().$this->view->getHTMLclosure();
-    
     return $this->view->getHTMLstuff().$this->view->getHeader(). $this->view->getSideBar("Perfil"). $this->view->getContainerStart().$profileData.$this->view->getContainerEnd().$this->view->getFooter().$this->view->getHTMLclosure();
-    }
-    
-    function editProfile(){
-        $editProfileForm = "";
-
-    return $this->view->getHTMLstuff().$this->view->getHeader(). $editProfileForm. $this->view->getFooter().$this->view->getHTMLclosure();
     }
 }
 ?>

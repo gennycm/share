@@ -17,7 +17,9 @@ class UserController extends Controller{
         "loginUser"=>array('admin','public'),
         "inicio"=>array('admin'),
         "amigos"=>array('admin'),
-        "perfil"=>array('admin'));
+        "perfil"=>array('admin'),
+        "editarPerfil"=>array('admin'),
+        "saveProfile"=>array('admin'));
     }
     
     public function register(){
@@ -130,6 +132,17 @@ class UserController extends Controller{
     public function perfil(){
         $userProfile = new UserProfile("Perfil");
         echo $userProfile->showProfile();
+    }
+    
+    public function editarPerfil(){
+        $userProfile = new UserProfile("Perfil");
+        echo $userProfile->editUserProfile();
+    }
+    
+    public function saveProfile(){
+        $user = new User();
+        $user->modifyUserInfo();
+        echo "El usuario ha sido actualizado";
     }
 
     public function getParams() {
