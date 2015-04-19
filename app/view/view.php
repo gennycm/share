@@ -24,17 +24,22 @@ class View{
 							  <link rel='stylesheet' type='text/css' href='../app/css/styles.css' />
 							  <link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,300,600,700' rel='stylesheet' type='text/css'>
 						</head>
-						<body>";
+						<body>
+						";
 		return $htmlStuff;
 	}
 
 	function getHeader(){
-		$this->header = "<header><h2></h2></header>";
+		$this->header = "<header>
+							<h2></h2>
+						</header>
+						";
 		return $this->header;
 	}
 
 	function getFooter(){
-		$this->footer= "</div><footer>SHARE YOUR FILES ♥ </footer>";
+		$this->footer= "</div>
+						<footer>SHARE YOUR FILES ♥ </footer>";
 		return $this->footer;
 	}
 
@@ -51,7 +56,7 @@ class View{
 		    case "Inicio":
 				$listElements = "<li class='home'><a class='active' href='#'>Inicio</a></li>
 					            <li class='portfolio'><a href='#'>Mis Archivos</a></li>
-					            <li class='contact'><a href='../UserController/listFriends'>Amigos</a></li>
+					            <li class='contact'><a href='../UserController/amigos'>Amigos</a></li>
 	            	            <li class='about'><a href='#about'>Cerrar sesión</a></li>";
 		        break;
 		    case "Mis archivos":
@@ -88,7 +93,9 @@ class View{
 	        <ul class='main-menu'>
 	            ".$listElements."
 	        </ul>
-		</div> <!-- /.navigation -->";
+		</div> <!-- /.navigation -->
+	</div> <!-- /#main-sidebar -->
+	";
 		return $userHome;
 	}
 
