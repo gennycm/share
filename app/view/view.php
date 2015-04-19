@@ -86,7 +86,7 @@ class View{
 
 		$userHome = "<div id='main-sidebar' class='hidden-xs hidden-sm'>
 		<div class='logo'>
-			<a href='#'><h1>".$_SESSION["username"]."</h1></a>
+			<a href='../UserController/perfil'><h1>".$_SESSION["username"]."</h1></a>
 			<span>".$_SESSION["name"]."</span>
 		</div> 
 		<div class='navigation'>

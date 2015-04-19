@@ -17,6 +17,9 @@ class UserController extends Controller{
         "loginUser"=>array('admin','public'),
         "inicio"=>array('admin'),
         "amigos"=>array('admin'));
+=======
+        "perfil"=>array('admin'));
+>>>>>>> 921c457e76a228279feb3051d29b330e8bb72bf0
     }
     
     public function register(){
@@ -124,9 +127,11 @@ class UserController extends Controller{
             echo "You did not fill out the required fields :(";
 
         }
-
-
-
+    }
+    
+    public function perfil(){
+        $userProfile = new UserProfile("Perfil");
+        echo $userProfile->showProfile();
     }
 
     public function getParams() {
