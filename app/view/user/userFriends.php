@@ -9,7 +9,7 @@ class UserFriends{
 		$this->action = $action;
 	}
 
-	public function getUsersFriends($friendsList){
+	public function getUsersFriends(){
 		$userFriends = "<div id='about' class='section-content'>
             <div class='row'>
                 <div class='col-md-12'>
@@ -21,7 +21,7 @@ class UserFriends{
                 </div>
             </div>";
 
-            return $userFriends;
+            return  $this->view->getHTMLstuff().$this->view->getHeader().$this->view->getSideBar($this->action).$this->view->getContainerStart().$userFriends.$this->view->getContainerEnd().$this->view->getFooter().$this->view->getHTMLclosure();;
 	}
 
 	public function getPosibleFriends($friendsList){

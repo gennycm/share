@@ -15,7 +15,8 @@ class UserController extends Controller{
         "deleteUser"=>array('admin'),
         "login"=>array('admin','public'),
         "loginUser"=>array('admin','public'),
-        "inicio"=>array('admin'));
+        "inicio"=>array('admin'),
+        "amigos"=>array('admin'));
     }
     
     public function register(){
@@ -80,8 +81,9 @@ class UserController extends Controller{
         echo $listUsersView->showUsersList($usersList);
     }
 
-    public function listFriends(){
-        $friends = new UserFriends();
+    public function amigos(){
+        $friends = new UserFriends("Amigos");
+        echo $friends->getUsersFriends();
 
 
     }
