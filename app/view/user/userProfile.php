@@ -66,24 +66,10 @@ class UserProfile{
                             <input name='username' type='text' id='username' maxlength='20' value='".$_SESSION["username"]."'>
                     </div> 
                     
-                    <!--
-                    <div class='col-md-4'>
-                            <label for='password'>Contraseña actual:</label>
-                            <input name='oldPassword' type='text' id='oldPassword' maxlength='20'>
-                    </div> 
-                    -->
-                    
                     <div class='col-md-4'>
                             <label for='password'>Contraseña nueva:</label>
-                            <input name='password' type='text' id='password' maxlength='20'>
+                            <input name='password' type='password' id='password' maxlength='20' value='".$_SESSION["password"]."'>
                     </div> 
-                    
-                    <!--
-                    <div class='col-md-4'>
-                            <label for='password'>Confirmar contraseña:</label>
-                            <input name='repeatPassword' type='text' id='repeatPassword' maxlength='20'>
-                    </div> 
-                    -->
                     
                     <div class='col-md-4'>
                             <div class='submit-btn'>

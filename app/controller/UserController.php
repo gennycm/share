@@ -2,27 +2,33 @@
     include_once('/../../mvc/system/Controller.php');
 
 class UserController extends Controller{
-	private $action;
+    private $action;
     private $params;
 
     public function __construct(){
         $params = array();
-        $this->accessControl = array("register"=>array('admin','public'),
-        "listUsers"=>array('admin'),
-        "registerUser"=>array('admin','public'),
-        "modify"=>array('admin'),
-        "modifyUser"=>array('admin'),
-        "deleteUser"=>array('admin'),
+        $this->accessControl = array(
         "login"=>array('admin','public'),
         "loginUser"=>array('admin','public'),
-        "inicio"=>array('admin'),
-        "amigos"=>array('admin'),
-        "perfil"=>array('admin'),
-        "editarPerfil"=>array('admin'),
-        "saveProfile"=>array('admin'));
+        "register"=>array('admin','public'),
+        "registerUser"=>array('admin','public'),    
+        "listUsers"=>array('admin','lbastito'),
+        "modify"=>array('admin','lbastito'),
+        "modifyUser"=>array('admin','lbastito'),
+        "deleteUser"=>array('admin','lbastito'),
+        "inicio"=>array('admin','lbastito'),
+        "amigos"=>array('admin','lbastito'),
+        "perfil"=>array('admin','lbastito'),
+        "editarPerfil"=>array('admin','lbastito'),
+        "saveProfile"=>array('admin','lbastito'),
+        "cerrarSesion"=>array('admin','lbastito'));
+        
+        session_start();
+        //$_SESSION["accessControl"][]=$this->accessControl;
     }
     
     public function register(){
+        session_destroy();
         $registerUserForm = new UserForm("register");
         echo $registerUserForm->registerUser();
     }
@@ -35,9 +41,8 @@ class UserController extends Controller{
             unset($userData['password_b']);
             $user->setAttributes($userData);
             if($user!=null){
-                $user->registerUser();
-                //redirect
-               header('Location: listUsers');
+               $user->registerUser();
+               header('Location: login');
             }else{
                  $this->register();
             }
@@ -46,9 +51,9 @@ class UserController extends Controller{
 
         }
     }
-
     
-       public function login(){
+    public function login(){
+        session_destroy();
         $loginUserForm = new UserForm("login");
         echo $loginUserForm->userLogin();
     } 
@@ -60,6 +65,7 @@ class UserController extends Controller{
             $systemUser = new SystemUser();
             $systemUser->login($userData,$appUser->getTableName());
             if ($systemUser->isLogged) {
+                //$this->addUserToAccessControl();
                 header("Location: inicio");            
             }else{
                 $message = "El usuario o contraseña es incorrecta o no existe :c";
@@ -112,7 +118,7 @@ class UserController extends Controller{
         $userData = $this->getParams();
     	//($id_user, $firstName, $lastName, $username,$password)
         if(isset($userData) && !empty($userData))
-	    {
+	{
             $user = new User();
             $user->setAttributes($userData);
             if($user!=null){
@@ -140,9 +146,26 @@ class UserController extends Controller{
     }
     
     public function saveProfile(){
+        $userData = $this->getParams();
         $user = new User();
+        $user->setAttributes($userData);
         $user->modifyUserInfo();
-        echo "El usuario ha sido actualizado";
+        
+        $systemUser = new SystemUser();
+        $systemUser->setVariables($userData);
+        
+        $message = "Los datos del usuario han sido cambiados exitosamente";
+        echo "<script type='text/javascript'>
+            alert('$message');
+            window.location.href = 'perfil';
+            </script>";
+    }
+    
+    public function cerrarSesion(){
+        $systemUser = new SystemUser();
+        $systemUser->logout();
+        header('Location: login');
+        exit();
     }
 
     public function getParams() {
@@ -153,6 +176,4 @@ class UserController extends Controller{
         $this->params = $params;
     }
 }
-
-
 ?>

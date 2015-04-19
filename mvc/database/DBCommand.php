@@ -15,7 +15,6 @@ class DBCommand{
     }   
     //insert($columns, $tableName)
     public static function insert($columns,$tableName, $primaryKey){
-        var_dump($columns);
         $keys = Array();
         foreach ($columns as $key => $value) {
             if ($key =='adblock' || $key == $primaryKey) {
@@ -25,10 +24,10 @@ class DBCommand{
             }
         }
 
-      //implode a los dos arreglos.
-      $keyStr = implode(',', $keys); // El str de los campos
-      $valStr = implode(',:', $keys);
-      $valStr = ":".$valStr; //Formo el str de los values
+        //implode a los dos arreglos.
+        $keyStr = implode(',', $keys); // El str de los campos
+        $valStr = implode(',:', $keys);
+        $valStr = ":".$valStr; //Formo el str de los values
 
         $query = "INSERT INTO ".$tableName." (".$keyStr.") VALUES (".$valStr.")";
         $stmnt = DBConnection::getInstance()->getConnection()->prepare($query);
@@ -40,7 +39,7 @@ class DBCommand{
             }
         }
 
-        $results = $stmnt->execute();
+        $stmnt->execute();
     }
     
     public static function update($columns,$tableName, $primaryKey){
@@ -53,26 +52,21 @@ class DBCommand{
             }
         }
 
-      //implode a los dos arreglos.
-      $keyStr = implode(' = ? , ', $keys); // El str de los campos
-      $keyStr = $keyStr." = ?";
+        //implode a los dos arreglos.
+        $keyStr = implode(' = ? , ', $keys); // El str de los campos
+        $keyStr = $keyStr." = ?";
 
         $query = "UPDATE ".$tableName." SET ".$keyStr." WHERE ".$primaryKey." = ". $columns[$primaryKey];
         $stmnt = DBConnection::getInstance()->getConnection()->prepare($query);
-
-
         unset($columns[$primaryKey]);                
         unset($columns['adblock']);
 
-
         $keyValues = Array();
         foreach ($columns as $key => &$value) {
-
-                array_push($keyValues, $value); 
+            array_push($keyValues, $value); 
         }
 
-        $results = $stmnt->execute($keyValues);
-        var_dump($results);
+        $stmnt->execute($keyValues);
     }
 
     //select columnas, tabla y condiciones
