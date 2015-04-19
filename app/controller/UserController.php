@@ -16,6 +16,7 @@ class UserController extends Controller{
         "login"=>array('admin','public'),
         "loginUser"=>array('admin','public'),
         "inicio"=>array('admin'),
+<<<<<<< HEAD
         "amigos"=>array('admin'));
 =======
         "perfil"=>array('admin'));
