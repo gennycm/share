@@ -34,7 +34,11 @@ class WebApplication{
 	 		$controller->runAction($action);   
 
 	 	}else{
-	 		header('Location: UserController/register');
+		 	if($this->urlMgr->getController() != '' && $this->urlMgr->getAction() == ''){
+	 			header('Location: UserController/login');
+		 	}else{
+	 			header('Location: UserController/login');
+		 	}
 
 
 	 	}
