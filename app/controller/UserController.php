@@ -4,7 +4,6 @@
 class UserController extends Controller{
 	private $action;
     private $params;
-    private $currentUser;
 
     public function __construct(){
         $params = array();
@@ -19,8 +18,6 @@ class UserController extends Controller{
         "inicio"=>array('admin'));
     }
     
-
-
     public function register(){
         $registerUserForm = new UserForm("register");
         echo $registerUserForm->registerUser();
@@ -56,13 +53,10 @@ class UserController extends Controller{
         $userData = $this->getParams();
         if(isset($userData) && !empty($userData)){
             $appUser = new User();
-            $user = new SystemUser();
-            $user->login($userData,$appUser->getTableName());
-            if ($user->isLogged) {
-                $this->currentUser = $user;
-                $userHome = new UserHome("Inicio");
-                echo $userHome->showUserHome($this->currentUser->loggedUser);
-               // header("Location: inicio");            
+            $systemUser = new SystemUser();
+            $systemUser->login($userData,$appUser->getTableName());
+            if ($systemUser->isLogged) {
+                header("Location: inicio");            
             }else{
                 $message = "El usuario o contraseña es incorrecta o no existe :c";
                 echo "<script type='text/javascript'>
@@ -75,8 +69,7 @@ class UserController extends Controller{
 
     public function inicio(){
         $userHome = new UserHome("Inicio");
-        var_dump($this->currentUser->loggedUser);
-        echo $userHome->showUserHome($this->currentUser->loggedUser);
+        echo $userHome->showUserHome();
     }
 
 
@@ -85,6 +78,12 @@ class UserController extends Controller{
         $usersList = $user->findAll();
         $listUsersView = new UserList("list");
         echo $listUsersView->showUsersList($usersList);
+    }
+
+    public function listFriends(){
+        $friends = new UserFriends();
+
+
     }
 
     public function deleteUser(){

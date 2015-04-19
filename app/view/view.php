@@ -6,6 +6,7 @@ class View{
 
 	public function __construct($Action){
 		$this->action = $Action;
+		session_start();
 	}
 
 	function getHTMLstuff(){
@@ -43,8 +44,7 @@ class View{
 	}
 
 
-	function getSideBar($user,$action){
-		$userData = $user->getAttributes();
+	function getSideBar($action){
 		$listElements = "";
 
 		switch ($action) {
@@ -81,8 +81,8 @@ class View{
 
 		$userHome = "<div id='main-sidebar' class='hidden-xs hidden-sm'>
 		<div class='logo'>
-			<a href='#'><h1>".$userData["username"]."</h1></a>
-			<span>".$userData["name"]."</span>
+			<a href='#'><h1>".$_SESSION["username"]."</h1></a>
+			<span>".$_SESSION["name"]."</span>
 		</div> 
 		<div class='navigation'>
 	        <ul class='main-menu'>
@@ -90,6 +90,19 @@ class View{
 	        </ul>
 		</div> <!-- /.navigation -->";
 		return $userHome;
+	}
+
+
+
+	function getContainerStart(){
+		return "<div id='main-content'>
+    			<div class='container-fluid'>";
+	}
+
+	function getContainerEnd(){
+		return "</div>
+			</div>";
+
 	}
 
 }
