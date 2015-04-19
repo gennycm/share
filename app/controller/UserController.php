@@ -16,11 +16,8 @@ class UserController extends Controller{
         "login"=>array('admin','public'),
         "loginUser"=>array('admin','public'),
         "inicio"=>array('admin'),
-<<<<<<< HEAD
         "amigos"=>array('admin'));
-=======
         "perfil"=>array('admin'));
->>>>>>> 921c457e76a228279feb3051d29b330e8bb72bf0
     }
     
     public function register(){
