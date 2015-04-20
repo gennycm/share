@@ -65,7 +65,7 @@ class UserController extends Controller{
             $systemUser->login($userData,$appUser->getTableName());
             if ($systemUser->isLogged) {
                 //$this->addUserToAccessControl();
-                header("Location: inicio");            
+              header("Location: inicio");            
             }else{
                 $message = "El usuario o contraseña es incorrecta o no existe :c";
                 echo "<script type='text/javascript'>

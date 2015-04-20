@@ -68,7 +68,6 @@ class ActiveRecord{
     
     public function setAttributes($attributes){ 
       $this->isNewRecord = true;
-
       foreach ($attributes as $column => $value) {
         $field = $column;
          if ($field == $this->primaryKey){

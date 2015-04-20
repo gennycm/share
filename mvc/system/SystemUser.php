@@ -23,7 +23,9 @@ class SystemUser{
     }
     
     public function authenticate($userData, $tbName){
-        $result = DBConnection::getInstance()->getDBCommand()->select($userData, $tbName);
+        $auxUser = new User();
+        $auxUser->setAttributes($userData);
+        $result = DBConnection::getInstance()->getDBCommand()->select($auxUser->getAttributes(), $tbName);
         $userInfo = Array();
         foreach ($result as $auxArray) {
             foreach ($auxArray as $key => $value) {
