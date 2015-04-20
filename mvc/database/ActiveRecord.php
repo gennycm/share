@@ -79,7 +79,7 @@ class ActiveRecord{
           }
          }
 
-         if (in_array($field,$this->columns)) {
+         if (array_key_exists($field,$this->columns)) {
             $this->columns[$field]= $value;
          }
       }
