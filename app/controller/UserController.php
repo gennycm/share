@@ -100,7 +100,9 @@ class UserController extends Controller{
     public function buscarAmigos(){
         $friends = new UserFriends("Amigos");
         $user = new User();
-        $posibleFriendsList = $user->getPosibleFriends($_SESSION["id_user"], $this->getParams());
+        $friendsList = $user->getUsersFriends($_SESSION["id_user"]);
+        $resultFriendsList = $user->searchFriend($_SESSION["id_user"], $this->getParams()["searchString"]);
+        echo $friends->getFriendsContent($friendsList, $resultFriendsList);
 
 
     }
