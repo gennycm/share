@@ -8,7 +8,7 @@ class UserProfile{
 
     function showProfile(){
     $profileData = 
-        "<div id='contact' class='section-content'>
+        "<div id='services' class='section-content'>
             <div class='row'>
                 <div class='col-md-12'>
                     <div class='section-title'>
@@ -30,7 +30,7 @@ class UserProfile{
                     </div>
                     <div class='col-md-4'>
                         <div class='submit-btn'>
-                            <input type='submit' class='submit-btn' value='Editar'/>
+                            <input type='submit' class='largeButton servicesBgColor' value='Editar'/>
                         </div> 
                     </div> 
                 </form>
@@ -42,7 +42,7 @@ class UserProfile{
     
     function editUserProfile(){
      $profileData = 
-        "<div id='contact' class='section-content'>
+        "<div id='services' class='section-content'>
             <div class='row'>
                     <div class='col-md-12'>
                             <div class='section-title'>
@@ -74,7 +74,7 @@ class UserProfile{
                     <div class='col-md-4'>
                             <div class='submit-btn'>
                                     <!--<a href='#' class='largeButton contactBgColor'>Send Message</a>-->
-                                    <input type='submit' class='submit-btn' value='Guardar'>
+                                    <input type='submit' class='largeButton servicesBgColor' value='Guardar'>
                             </div> 
                     </form>
                     </div> 

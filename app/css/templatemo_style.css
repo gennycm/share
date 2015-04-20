@@ -76,13 +76,14 @@ h1, h2, h3, h4, h5, h6 {
 #contact h2 {
 	background-color: #e3387c;
 }
-a.largeButton {
+a.largeButton, input[type="submit"].largeButton {
 	color: white;
 	text-transform: uppercase;
 	font-weight: 700;
 	font-size: 14px;
 	display: inline-block;
 	padding: 10px 20px;
+	border:none;
 	border-bottom: 3px solid;
 }
 .homeBgColor {
@@ -103,14 +104,27 @@ a.largeButton {
 .contactBgColor:hover {
 	background-color: #9f164d;
 }
-a.largeButton.homeBgColor {
+
+.servicesBgColor {
+	background-color: #974DEA;
+}
+
+.servicesBgColor:hover {
+	background-color: #4C2675;
+}
+
+a.largeButton.homeBgColor, input[type="submit"].largeButton.homeBgColor {
 	border-color: #16709f;
 }
-a.largeButton.portfolioBgColor {
+a.largeButton.portfolioBgColor,input[type="submit"].largeButton.portfolioBgColor {
 	border-color: #169f60;
 }
-a.largeButton.contactBgColor {
+a.largeButton.contactBgColor, input[type="submit"].largeButton.contactBgColor {
 	border-color: #9f164d;
+}
+
+a.largeButton.servicesBgColor, input[type="submit"].largeButton.servicesBgColor {
+	border-color: #4C2675;
 }
 #main-sidebar {
 	float: left;
@@ -555,4 +569,16 @@ a.menu-toggle-btn i {
 .slider-caption {
 	display: none;
 }
+}
+
+/*Tabla de amigos*/
+table.friendsTb{
+	width: 100%;
+	margin-top: 30px;
+}
+
+table.friendsTb th{
+	border: none;
+	border-bottom: 2px solid #4C2675;
+
 }

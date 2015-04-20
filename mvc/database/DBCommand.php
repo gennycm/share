@@ -138,6 +138,14 @@ class DBCommand{
         $result = $stmnt->execute();
         var_dump($result);
     }
+
+
+    public static function executeQuery($query){
+        $stmnt = DBConnection::getInstance()->getConnection()->prepare($query);
+        $stmnt->execute();
+        $result = $stmnt->fetchAll();
+        return $result;
+    }
 }
 
 ?>

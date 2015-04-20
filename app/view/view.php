@@ -15,8 +15,10 @@ class View{
         <head>
             <title> SYF | ".$this->action."</title>
             <meta charset='UTF-8'> 
+                <link href='//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' rel='stylesheet'>
                 <link rel='stylesheet' type='text/css' href='../app/css/bootstrap.min.css'>
                 <link rel='stylesheet' type='text/css' href='../app/css/font-awesome.min.css'>
+                <link rel='stylesheet' type='text/css' href='../app/css/font-awesome.css'>
                 <link rel='stylesheet' type='text/css' href='../app/css/templatemo_misc.css'>
                 <link rel='stylesheet' type='text/css' href='../app/css/templatemo_style.css'>
                 <link rel='stylesheet' type='text/css' href='app/css/styles.css' />
@@ -61,25 +63,25 @@ class View{
                 case "Mis archivos":
                             $listElements = "<li class='home'><a href='#'>Inicio</a></li>
                                                 <li class='portfolio'><a class='active' href='#'>Mis Archivos</a></li>
-                                                <li class='contact'><a href='#'>Amigos</a></li>
+                                                <li class='contact'><a href='../UserController/amigos'>Amigos</a></li>
                                 <li class='about'><a href='../UserController/cerrarSesion'>Cerrar sesión</a></li>";
                     break;
                 case "Amigos":
                             $listElements = "<li class='home'><a href='#'>Inicio</a></li>
                                                 <li class='portfolio'><a href='#'>Mis Archivos</a></li>
-                                                <li class='contact'><a class='active' href='#'>Amigos</a></li>
+                                                <li class='contact'><a class='active' href='../UserController/amigos'>Amigos</a></li>
                                 <li class='about'><a href='../UserController/cerrarSesion'>Cerrar sesión</a></li>";
                     break;
                 case "Cerrar sesión":
                             $listElements = "<li class='home'><a href='#'>Inicio</a></li>
                                                 <li class='portfolio'><a href='#'>Mis Archivos</a></li>
-                                                <li class='contact'><a href='#'>Amigos</a></li>
+                                                <li class='contact'><a href='../UserController/amigos'>Amigos</a></li>
                                 <li class='about'><a class='active' href='../UserController/cerrarSesion'>Cerrar sesión</a></li>";
                     break;
                 default:
                             $listElements = "<li class='home'><a href='#'>Inicio</a></li>
                                                 <li class='portfolio'><a href='#'>Mis Archivos</a></li>
-                                                <li class='contact'><a href='#'>Amigos</a></li>
+                                                <li class='contact'><a href='../UserController/amigos'>Amigos</a></li>
                                 <li class='about'><a href='../UserController/cerrarSesion'>Cerrar sesión</a></li>";
             }
 

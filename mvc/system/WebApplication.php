@@ -39,8 +39,6 @@ class WebApplication{
 		 	}else{
 	 			header('Location: UserController/login');
 		 	}
-
-
 	 	}
     }         
 }

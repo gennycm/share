@@ -1,6 +1,7 @@
 <?php
 class Controller{
     protected $accessControl;
+    private $params;
     
     public function addUserToAccessControl(){
         $user = $_SESSION["username"];
@@ -29,6 +30,14 @@ class Controller{
     
     public function redirect($url){
         header("Location: $url"); //
+    }
+
+    public function getParams() {
+        return $this->params;
+    }
+
+    public function setParams($params) {
+        $this->params = $params;
     }
 }
 ?>

@@ -3,7 +3,6 @@
 
 class UserController extends Controller{
     private $action;
-    private $params;
 
     public function __construct(){
         $params = array();
@@ -92,7 +91,16 @@ class UserController extends Controller{
 
     public function amigos(){
         $friends = new UserFriends("Amigos");
-        echo $friends->getUsersFriends();
+        $user = new User();
+        $friendsList = $user->getUsersFriends($_SESSION["id_user"]);
+        $pFriendsList = $user->getPosibleFriends($_SESSION["id_user"]);
+        echo $friends->getFriendsContent($friendsList, $pFriendsList);
+    }
+
+    public function buscarAmigos(){
+        $friends = new UserFriends("Amigos");
+        $user = new User();
+        $posibleFriendsList = $user->getPosibleFriends($_SESSION["id_user"], $this->getParams());
 
 
     }
@@ -166,14 +174,6 @@ class UserController extends Controller{
         $systemUser->logout();
         header('Location: login');
         exit();
-    }
-
-    public function getParams() {
-        return $this->params;
-    }
-
-    public function setParams($params) {
-        $this->params = $params;
     }
 }
 ?>

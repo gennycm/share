@@ -134,5 +134,11 @@ class ActiveRecord{
         //print_r($allmodelObjs);
         return $allmodelObjs;
     }
+
+
+    public function executeQuery($query){
+      $result = DBCommand::executeQuery($query);
+      return $result;
+    }
 }
 ?>
