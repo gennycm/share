@@ -13,7 +13,7 @@ class Controller{
             }
         }  
         echo "<br/>Usuarios con acceso: "; 
-        print_r($_SESSION["accessControl"]);
+        var_dump($_SESSION["accessControl"]);
     }
     
     public function runAction($action){

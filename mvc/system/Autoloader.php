@@ -1,5 +1,4 @@
 <?php
-include_once(dirname(__FILE__)."/Config.php");
 
 function __autoload($className) {
 

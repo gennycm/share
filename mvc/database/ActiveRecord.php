@@ -78,7 +78,10 @@ class ActiveRecord{
             $this->isNewRecord = true;
           }
          }
-        $this->columns[$field]= $value;
+
+         if (in_array($field,$this->columns)) {
+            $this->columns[$field]= $value;
+         }
       }
    }
     

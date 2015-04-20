@@ -75,21 +75,5 @@ class User extends ActiveRecord{
   }
 }
 
-
-    function list_users_found($search_string){
-      $db_connection = new connection();
-      $query = "SELECT * FROM users WHERE username LIKE '%".$search_string."%'";
-      $users = array();
-      $result = $db_connection -> execute_query($query);
-      if(mysqli_num_rows($result) > 0){
-        while($row = mysqli_fetch_array($result)){
-          $user = new user($row["id_user"], $row["username"], $row["email"], $row["name"], "");
-          array_push($users, $user);
-        }
-      } 
-      return $users;
-    }
-
-
 ?>
 

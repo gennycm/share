@@ -6,10 +6,10 @@ class SystemUser{
     
     public function login($userData, $tbName){
        if($this->authenticate($userData, $tbName)){
-          session_start();
+        // session_start();
           $userInfo = $this->userObj->getAttributes();
           $this->setSessionVariables($userInfo);
-          $this->logged= $_SESSION[$userInfo["username"]];
+          $this->logged= $_SESSION["username"];
           $this->isLogged = true;
        }else{
           $this->isLogged = false;
