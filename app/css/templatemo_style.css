@@ -52,6 +52,13 @@ h1, h2, h3, h4, h5, h6 {
 	margin: 0;
 	font-size: 20px;
 }
+#home .section-title {
+	border-color: #16709F;
+}
+#home h2 {
+	background-color: #38A9E3;
+}
+
 #about .section-title {
 	border-color: #e09d1a;
 }
@@ -70,6 +77,14 @@ h1, h2, h3, h4, h5, h6 {
 #portfolio h2 {
 	background-color: #38e395;
 }
+
+#portfolio textarea{
+	width: 100%;
+	display: block;
+	border: 1px solid #d5dbe0;
+	outline: 0;
+}
+
 #contact .section-title {
 	border-color: #cb1d62;
 }
@@ -118,6 +133,7 @@ a.largeButton.homeBgColor, input[type="submit"].largeButton.homeBgColor {
 }
 a.largeButton.portfolioBgColor,input[type="submit"].largeButton.portfolioBgColor {
 	border-color: #169f60;
+	float: right;
 }
 a.largeButton.contactBgColor, input[type="submit"].largeButton.contactBgColor {
 	border-color: #9f164d;
@@ -311,6 +327,14 @@ a.menu-toggle-btn i {
 .member-item {
 	overflow: hidden;
 	height: auto;
+	border: none;
+}
+#portfolio .member-item{
+	border-bottom: 2px solid #1dcb7c;
+}
+#about .member-item{
+	padding-bottom: 5px;
+	border-bottom: 2px solid #e09d1a;
 }
 .member-item:hover .overlay {
 	opacity: 1;
@@ -348,9 +372,11 @@ a.menu-toggle-btn i {
 	text-transform: uppercase;
 	font-size: 18px;
 	color: #e9b144;
+	text-align: left;
 }
 .member-content p {
 	color: #aaaaaa;
+	text-align: left;
 	font-size: 12;
 }
 .social-member li {
@@ -469,10 +495,11 @@ a.menu-toggle-btn i {
 	width: 100%;
 	text-align: center;
 }
-.portfolio-title a {
+.portfolio-title a, #portfolio .member-content h4 {
 	color: #38e395;
 	font-size: 18px;
 	text-transform: uppercase;
+	text-align: left;
 }
 .load-more {
 	width: 100%;
