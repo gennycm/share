@@ -21,6 +21,7 @@ class UserController extends Controller{
         "editarPerfil"=>array('admin','lbastito'),
         "saveProfile"=>array('admin','lbastito'),
         "buscarAmigos"=>array('admin','lbastito'),
+        "deleteFriend"=>array('admin','lbastito'),
         "cerrarSesion"=>array('admin','lbastito'));
         
         session_start();
@@ -93,20 +94,31 @@ class UserController extends Controller{
     public function amigos(){
         $friends = new UserFriends("Amigos");
         $user = new User();
-        $friendsList = $user->getUsersFriends($_SESSION["id_user"]);
-        $pFriendsList = $user->getPosibleFriends($_SESSION["id_user"]);
+        $friendsList = $user->getUsersFriends();
+        $pFriendsList = $user->getPosibleFriends();
         echo $friends->getFriendsContent($friendsList, $pFriendsList);
     }
 
     public function buscarAmigos(){
         $friends = new UserFriends("Amigos");
         $user = new User();
-        $friendsList = $user->getUsersFriends($_SESSION["id_user"]);
-        $resultFriendsList = $user->searchFriend($_SESSION["id_user"], $this->getParams()["search_string"]);
-        echo $friends->getFriendsContent($friendsList, $resultFriendsList);
-
-
+        $friendsList = $user->getUsersFriends();
+        if (!empty($this->getParams()["search_string"])) {
+            $resultFriendsList = $user->searchFriend($this->getParams()["search_string"]);
+            echo $friends->getFriendsContent($friendsList, $resultFriendsList);
+        }else{
+            $this->amigos();
+        }
     }
+
+
+    public function deleteFriend(){
+        $userData = $this->getParams();
+        $user = new User(); 
+        $result = $user->deleteFriend($this->getParams()["idFriend"]);   
+        header('Location: amigos');
+    }
+
 
     public function deleteUser(){
         $userData = $this->getParams();
