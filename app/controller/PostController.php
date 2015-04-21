@@ -35,8 +35,8 @@ class PostController extends Controller{
     }
 
     private function uploadFile($filepath_tmp, $filepath){
-        if(is_file($tmp_file_name) == 1){
-            return move_uploaded_file($tmp_file_name, "./user_files/".$file_name);
+        if(is_file($filepath_tmp) == 1){
+            return move_uploaded_file($filepath_tmp, "./user_files/".$filepath);
         }
         else{
             return false;
