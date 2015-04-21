@@ -43,6 +43,19 @@ class PostController extends Controller{
         }
     }
 
+    /*
+    <form action="functions.php" method="post" enctype="multipart/form-data">
+        <label>Comentario (120 caract)</label><br>
+        <textarea name="description" rows="2" cols="63"></textarea><br><br>
+        <label class="fileContainer">
+            Subir archivo
+            <input name="file" type="file"/>
+        </label>
+        <input type="hidden" value="sa" name="operation">
+        <input type="submit" value="Guardar">                       
+    </form>
+    */
+
     
 }
 ?>
