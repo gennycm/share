@@ -88,7 +88,7 @@ class UserFriends{
                                 </h2>
                             </div>
                         <div class='col-md-8'>
-                                    <form id='form_register' method='POST' action=''>
+                                    <form id='form_register' method='POST' action='../UserController/buscarAmigos'>
                                     <input type='text' name='search_string'>
                         </div>
                         <div class='col-md-4'>

@@ -20,6 +20,7 @@ class UserController extends Controller{
         "perfil"=>array('admin','lbastito'),
         "editarPerfil"=>array('admin','lbastito'),
         "saveProfile"=>array('admin','lbastito'),
+        "buscarAmigos"=>array('admin','lbastito'),
         "cerrarSesion"=>array('admin','lbastito'));
         
         session_start();
@@ -101,7 +102,7 @@ class UserController extends Controller{
         $friends = new UserFriends("Amigos");
         $user = new User();
         $friendsList = $user->getUsersFriends($_SESSION["id_user"]);
-        $resultFriendsList = $user->searchFriend($_SESSION["id_user"], $this->getParams()["searchString"]);
+        $resultFriendsList = $user->searchFriend($_SESSION["id_user"], $this->getParams()["search_string"]);
         echo $friends->getFriendsContent($friendsList, $resultFriendsList);
 
 
