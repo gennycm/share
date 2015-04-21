@@ -22,6 +22,7 @@ class UserController extends Controller{
         "saveProfile"=>array('admin','lbastito'),
         "buscarAmigos"=>array('admin','lbastito'),
         "deleteFriend"=>array('admin','lbastito'),
+        "addFriend"=>array('admin','lbastito'),
         "cerrarSesion"=>array('admin','lbastito'));
         
         session_start();
@@ -117,6 +118,13 @@ class UserController extends Controller{
         $user = new User(); 
         $result = $user->deleteFriend($this->getParams()["idFriend"]);   
         header('Location: amigos');
+    }
+
+    public function addFriend(){
+        $userData = $this->getParams();
+        $user = new User(); 
+        $result = $user->addFriend($this->getParams()["idFriend"]);   
+        header('Location: amigos');        
     }
 
 

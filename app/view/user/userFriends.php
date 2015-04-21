@@ -11,7 +11,6 @@ class UserFriends{
     public function getFriendsContent($usersList, $pFriends){
         $userFriends = $this->getUsersFriends($usersList);
         $posibleFriends = $this->getPosibleFriends($pFriends);
-
         return  $this->view->getHTMLstuff().$this->view->getHeader().$this->view->getSideBar($this->action).$this->view->getContainerStart().$userFriends.$posibleFriends.$this->view->getContainerEnd().$this->view->getHTMLclosure();;
 
     }
@@ -32,7 +31,7 @@ class UserFriends{
                         $usersTable = $usersTable."<td>".$value."</td>";
                     }
                 }
-                $usersTable = $usersTable. "<td><a href='../UserController/deleteUser?id_user=" . $userArray["id_user"] . "'><i class='fa fa-user-times 2x' style ='color:#EE4035'></i></a></td>".
+                $usersTable = $usersTable. "<td><a href='../UserController/deleteFriend?idFriend=" . $userArray["id_user"] . "'><i class='fa fa-user-times 2x' style ='color:#EE4035'></i></a></td>".
                     "</tr>";
             }
 
@@ -71,7 +70,7 @@ class UserFriends{
                         $usersTable = $usersTable."<td>".$value."</td>";
                     }
                 }
-                $usersTable = $usersTable. "<td><a href='../UserController/deleteUser?id_user=" . $userArray["id_user"] . "'><i class='fa fa-user-plus 2x' style ='color:#169f60'></i></a></td>".
+                $usersTable = $usersTable. "<td><a href='../UserController/addFriend?idFriend=" . $userArray["id_user"] . "'><i class='fa fa-user-plus 2x' style ='color:#169f60'></i></a></td>".
                     "</tr>";
             }
 

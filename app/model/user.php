@@ -24,8 +24,8 @@ class User extends ActiveRecord{
   	$this->save();
   }
 
-  function getUsersFriends($idUser){
-    $query = "SELECT ".$this->getTableName().".id_user, username, name from (select id_user from friends where id_friend = ".$idUser." union select id_friend from friends where id_user= ".$idUser.") AS friendsTb join ".$this->getTableName()." on friendsTb.id_user = ".$this->getTableName().".id_user";
+  function getUsersFriends(){
+    $query = "SELECT ".$this->getTableName().".id_user, username, name from (select id_user from friends where id_friend = ".$_SESSION["id_user"]." union select id_friend from friends where id_user= ".$_SESSION["id_user"].") AS friendsTb join ".$this->getTableName()." on friendsTb.id_user = ".$this->getTableName().".id_user";
     $result = $this->executeQuery($query);
     $friends = Array();
     $friend = Array();
@@ -41,8 +41,8 @@ class User extends ActiveRecord{
   }
 
 
-  function getPosibleFriends($idUser){
-    $query = "SELECT ".$this->getTableName().".id_user, username, name from user WHERE id_user NOT IN (SELECT ".$this->getTableName().".id_user from (select id_user from friends where id_friend = ".$idUser." union select id_friend from friends where id_user= ".$idUser." ) AS friendsTb join ".$this->getTableName()." on friendsTb.id_user = ".$this->getTableName().".id_user)AND id_user != ".$idUser;
+  function getPosibleFriends(){
+    $query = "SELECT ".$this->getTableName().".id_user, username, name from user WHERE id_user NOT IN (SELECT ".$this->getTableName().".id_user from (select id_user from friends where id_friend = ".$_SESSION["id_user"]." union select id_friend from friends where id_user= ".$_SESSION["id_user"]." ) AS friendsTb join ".$this->getTableName()." on friendsTb.id_user = ".$this->getTableName().".id_user)AND id_user != ".$_SESSION["id_user"];
     $result = $this->executeQuery($query);
     $friends = Array();
     $friend = Array();
@@ -57,26 +57,33 @@ class User extends ActiveRecord{
     return $friends;
   }
 
-  function searchFriend($idUser, $friendName){
+  function searchFriend($friendName){
     $friends = Array();
     $friend = Array();
-    if (empty($friendName)) {
-        $friends = $this->getPosibleFriends($idUser);
-    }else{
-        $query = "SELECT * FROM ( SELECT ".$this->getTableName().".id_user, username, name from user WHERE id_user NOT IN (SELECT ".$this->getTableName().".id_user from (select id_user from friends where id_friend = ".$idUser." union select id_friend from friends where id_user= ".$idUser." ) AS friendsTb join ".$this->getTableName()." on friendsTb.id_user = ".$this->getTableName().".id_user)AND id_user != ".$idUser.") AS notFriends WHERE username LIKE '%".$friendName."%' or name LIKE '%".$friendName."%'";
-        $result = $this->executeQuery($query);
+    $query = "SELECT * FROM ( SELECT ".$this->getTableName().".id_user, username, name from user WHERE id_user NOT IN (SELECT ".$this->getTableName().".id_user from (select id_user from friends where id_friend = ".$_SESSION["id_user"]." union select id_friend from friends where id_user= ".$_SESSION["id_user"]." ) AS friendsTb join ".$this->getTableName()." on friendsTb.id_user = ".$this->getTableName().".id_user)AND id_user != ".$_SESSION["id_user"].") AS notFriends WHERE username LIKE '%".$friendName."%' or name LIKE '%".$friendName."%'";
+    $result = $this->executeQuery($query);
 
-          foreach ($result as $auxArray) {
-            foreach ($auxArray as $key => $value) {
-              if(!is_numeric($key)) {
-                  $friend[$key] = $value;
-                }
-              }
-              array_push($friends, $friend);
+      foreach ($result as $auxArray) {
+        foreach ($auxArray as $key => $value) {
+          if(!is_numeric($key)) {
+              $friend[$key] = $value;
             }
-    }
+          }
+          array_push($friends, $friend);
+        }
     return $friends;
   }
+
+  function deleteFriend($idFriend){
+    $query = "DELETE FROM friends WHERE (id_user = ".$_SESSION["id_user"]." AND id_friend = ".$idFriend.") OR (id_user = ".$idFriend." AND id_friend = ".$_SESSION["id_user"].")";
+    $result = $this->executeQuery($query);
+  }
+
+  function addFriend($idFriend){
+    $query = "INSERT INTO friends(id_user,id_friend,status) VALUES (".$_SESSION["id_user"].",".$idFriend.",1)";
+    $this->executeQuery($query);
+  }
+
 }
 
 ?>
