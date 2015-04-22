@@ -6,7 +6,7 @@ class URLManager{
 	public $params = Array();
 	
 	function processURL($request){
-		if(count($request)>0){
+		if(count($request)>0 && isset($request["url"])){
 			$url = $request['url'];
 			$urlArray = $this->parseUrl($url);
 			$this->controller = $urlArray[0];

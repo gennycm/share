@@ -1,5 +1,4 @@
 <?php
-    include_once('/../../mvc/system/Controller.php');
 
 class UserController extends Controller{
     private $action;
@@ -56,6 +55,7 @@ class UserController extends Controller{
     }
     
     public function login(){
+        session_start();
         session_destroy();
         $loginUserForm = new UserForm("login");
         echo $loginUserForm->userLogin();

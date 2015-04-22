@@ -1,4 +1,4 @@
- <?php
+<?php
 class DBConnection{
 	public $host = 'localhost';
 	public $schema = "mvc_share"; //nombre de la base de datos
@@ -44,5 +44,4 @@ class DBConnection{
 		return $this->connection;
 	}
 }
-
 ?>

@@ -64,4 +64,3 @@ class Post extends ActiveRecord{
 }
 
 ?>
-

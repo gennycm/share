@@ -31,7 +31,7 @@ class PostController extends Controller{
         session_start();
         $id_user =  $_SESSION["id_user"]; //NECESITAMOS EL ID DEL USUARIO EN SESSION. 
 
-        $destination_path = getcwd()."\\app\\user_files".DIRECTORY_SEPARATOR;
+        $destination_path = getcwd()."/app/user_files".DIRECTORY_SEPARATOR;
         $target_path = $destination_path . basename($filepath);
         $filepath_tmp = $postData["filename_tmp"];
 
@@ -66,13 +66,13 @@ class PostController extends Controller{
         $post->setAttributes($postData);
         $post = $post->find();
         $postAttr = $post->getAttributes();
-        $destination_path = getcwd()."\\app\\user_files".DIRECTORY_SEPARATOR;
+        $destination_path = getcwd()."/app/user_files".DIRECTORY_SEPARATOR;
 
             $file_name = $postAttr["filepath"];
             if(is_file($destination_path.$file_name)){
                 $ext = pathinfo($destination_path.$file_name, PATHINFO_EXTENSION);
                 header("Content-disposition: attachment; filename=".basename($file_name));
-                header("Content-type: ".$this->getContentType());
+                header("Content-type: ".$this->getContentType($ext));
                 readfile($destination_path.$file_name);
             }
             else{
