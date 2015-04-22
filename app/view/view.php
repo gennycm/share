@@ -55,34 +55,34 @@ class View{
 
             switch ($action) {
                 case "Inicio":
-                            $listElements = "<li class='home'><a class='active' href='#'>Inicio</a></li>
-                                                <li class='portfolio'><a href='#'>Mis Archivos</a></li>
+                            $listElements = "<li class='about'><a class='active' href='../UserController/inicio'>Inicio</a></li>
+                                                <li class='portfolio'><a href='../UserController/misArchivos'>Mis Archivos</a></li>
                                                 <li class='contact'><a href='../UserController/amigos'>Amigos</a></li>
-                                <li class='about'><a href='../UserController/cerrarSesion'>Cerrar sesión</a></li>";
+                                <li class='home'><a href='../UserController/cerrarSesion'>Cerrar sesión</a></li>";
                     break;
                 case "Mis archivos":
-                            $listElements = "<li class='home'><a href='#'>Inicio</a></li>
-                                                <li class='portfolio'><a class='active' href='#'>Mis Archivos</a></li>
+                            $listElements = "<li class='about'><a href='../UserController/inicio'>Inicio</a></li>
+                                                <li class='portfolio'><a class='active' href='../UserController/misArchivos'>Mis Archivos</a></li>
                                                 <li class='contact'><a href='../UserController/amigos'>Amigos</a></li>
-                                <li class='about'><a href='../UserController/cerrarSesion'>Cerrar sesión</a></li>";
+                                <li class='home'><a href='../UserController/cerrarSesion'>Cerrar sesión</a></li>";
                     break;
                 case "Amigos":
-                            $listElements = "<li class='home'><a href='#'>Inicio</a></li>
-                                                <li class='portfolio'><a href='#'>Mis Archivos</a></li>
+                            $listElements = "<li class='about'><a href='../UserController/inicio'>Inicio</a></li>
+                                                <li class='portfolio'><a href='../UserController/misArchivos'>Mis Archivos</a></li>
                                                 <li class='contact'><a class='active' href='../UserController/amigos'>Amigos</a></li>
-                                <li class='about'><a href='../UserController/cerrarSesion'>Cerrar sesión</a></li>";
+                                <li class='home'><a href='../UserController/cerrarSesion'>Cerrar sesión</a></li>";
                     break;
                 case "Cerrar sesión":
-                            $listElements = "<li class='home'><a href='#'>Inicio</a></li>
-                                                <li class='portfolio'><a href='#'>Mis Archivos</a></li>
+                            $listElements = "<li class='about'><a href='../UserController/inicio'>Inicio</a></li>
+                                                <li class='portfolio'><a href='../UserController/misArchivos'>Mis Archivos</a></li>
                                                 <li class='contact'><a href='../UserController/amigos'>Amigos</a></li>
-                                <li class='about'><a class='active' href='../UserController/cerrarSesion'>Cerrar sesión</a></li>";
+                                <li class='home'><a class='active' href='../UserController/cerrarSesion'>Cerrar sesión</a></li>";
                     break;
                 default:
-                            $listElements = "<li class='home'><a href='#'>Inicio</a></li>
-                                                <li class='portfolio'><a href='#'>Mis Archivos</a></li>
+                            $listElements = "<li class='about'><a href='../UserController/inicio'>Inicio</a></li>
+                                                <li class='portfolio'><a href='../UserController/misArchivos'>Mis Archivos</a></li>
                                                 <li class='contact'><a href='../UserController/amigos'>Amigos</a></li>
-                                <li class='about'><a href='../UserController/cerrarSesion'>Cerrar sesión</a></li>";
+                                <li class='home'><a href='../UserController/cerrarSesion'>Cerrar sesión</a></li>";
             }
 
             $userHome = "<div id='main-sidebar' class='hidden-xs hidden-sm'>

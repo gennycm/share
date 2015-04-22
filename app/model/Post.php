@@ -20,8 +20,8 @@ class Post extends ActiveRecord{
     $this-> delete();
   }
 
-  function listAllPostsFromUser($id_user){
-    $query = "SELECT * FROM ".$this->getTableName()." WHERE id_user= ".$id_user.")";
+  function listAllPostsFromUser(){
+    $query = "SELECT * FROM ".$this->getTableName()." WHERE id_user= ".$_SESSION["id_user"];
     $result = $this->executeQuery($query);
     $posts = Array();
     $post = Array();
@@ -34,6 +34,26 @@ class Post extends ActiveRecord{
           array_push($posts, $post);
         }
     return $posts;
+  }
+
+  function listAllFriendsPosts(){
+    $query = "SELECT user.id_user,name,id_post,description,filepath
+              FROM user, ".$this->getTableName()."
+              WHERE  user.ID_user = ".$this->getTableName().".id_user and user.id_user != ".$_SESSION["id_user"];
+    $result = $this->executeQuery($query);
+    $posts = Array();
+    $post = Array();
+      foreach ($result as $auxArray) {
+        foreach ($auxArray as $key => $value) {
+          if(!is_numeric($key)) {
+              $post[$key] = $value;
+            }
+          }
+          array_push($posts, $post);
+        }
+    return $posts;
+    var_dump($posts);
+    exit();
   }
 
 }

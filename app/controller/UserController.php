@@ -11,19 +11,20 @@ class UserController extends Controller{
         "loginUser"=>array('admin','public'),
         "register"=>array('admin','public'),
         "registerUser"=>array('admin','public'),    
-        "listUsers"=>array('admin','lbastito'),
-        "modify"=>array('admin','lbastito'),
-        "modifyUser"=>array('admin','lbastito'),
-        "deleteUser"=>array('admin','lbastito'),
-        "inicio"=>array('admin','lbastito'),
-        "amigos"=>array('admin','lbastito'),
-        "perfil"=>array('admin','lbastito'),
-        "editarPerfil"=>array('admin','lbastito'),
-        "saveProfile"=>array('admin','lbastito'),
-        "buscarAmigos"=>array('admin','lbastito'),
-        "deleteFriend"=>array('admin','lbastito'),
-        "addFriend"=>array('admin','lbastito'),
-        "cerrarSesion"=>array('admin','lbastito'));
+        "listUsers"=>array('admin'),
+        "modify"=>array('admin'),
+        "modifyUser"=>array('admin'),
+        "deleteUser"=>array('admin'),
+        "inicio"=>array('admin'),
+        "amigos"=>array('admin'),
+        "perfil"=>array('admin'),
+        "editarPerfil"=>array('admin'),
+        "saveProfile"=>array('admin'),
+        "buscarAmigos"=>array('admin'),
+        "deleteFriend"=>array('admin'),
+        "addFriend"=>array('admin'),
+        "misArchivos"=>array('admin'),
+        "cerrarSesion"=>array('admin'));
         
         session_start();
         //$_SESSION["accessControl"][]=$this->accessControl;
@@ -81,9 +82,21 @@ class UserController extends Controller{
 
     public function inicio(){
         $userHome = new UserHome("Inicio");
+        $postList = new PostController();
+        $postArray = $postList->listUserFriendsPosts();
+        $userHome->setPostList($postArray);
+
+
         echo $userHome->showUserHome();
     }
 
+    public function misArchivos(){
+        $userFiles = new UserFiles("Mis archivos");
+        $postList = new PostController();
+        $postArray = $postList->listPostsByUser();
+        $userFiles->setPostList($postArray);
+        echo $userFiles->showUserFiles();
+    }
 
     public function listUsers(){
         $user = new User();

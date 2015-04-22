@@ -13,6 +13,11 @@ class URLManager{
 			$this->action = $urlArray[1];
 			unset($request["url"]);
 			$this->params = $request;
+
+			if (isset($_FILES["file"]["name"]) && !empty($_FILES["file"]["name"])) {
+				$this->params["filename"] = $_FILES["file"]["name"];
+				$this->params["filename_tmp"] = $_FILES["file"]["tmp_name"];
+			}
 		}else{
 			//echo 'Error al procesar la URL :c';
 		}
