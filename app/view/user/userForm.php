@@ -12,7 +12,7 @@ class UserForm{
 		"<div class='main'>".
 			"<div class='login-form'>".
 				"<h1>¡Regístrate!</h1>".
-					"<form id='form_register' action='../PostController/savePost' method='POST'>".
+					"<form id='form_register' action='../UserController/registerUser' method='POST'>".
 						"<input type='hidden' value='null' name='id_user' id='id_user'  />".
 				        "<input type='text' id='name' name='name' placeholder='Nombre completo'/><br>".
 				        "<input type='text' id='email' name='email' placeholder='Correo'/><br>".
