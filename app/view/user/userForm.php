@@ -16,7 +16,7 @@ class UserForm{
 						"<input type='hidden' value='null' name='id_user' id='id_user'  />".
 				        "<input type='text' id='name' name='name' placeholder='Nombre completo'/><br>".
 				        "<input type='text' id='email' name='email' placeholder='Correo'/><br>".
-				        "<input type='text' id='username' name='username' placeholder='Nombre de usuario'/><br>".
+				        "<input type='text' id='username' name='username' placeholder='Nombre de usuario'  maxlength='13'/><br>".
 				        "<input type='password' id='password' name='password' placeholder='Contraseña'/><br>".
 				        "<input name='password_b' id='password_b'type='password' placeholder='Confirmar contraseña'>".
 				        "<input type='submit' value='Registrarse'>".

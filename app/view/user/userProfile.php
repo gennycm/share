@@ -55,20 +55,20 @@ class UserProfile{
                     <form id='form_register' action='../UserController/saveProfile' method='POST'>
                     <input type='hidden' value='".$_SESSION["id_user"]."' name='id_user' id='id_user'/>
                             <label>Nombre:</label>
-                            <input name='name' type='text' id='name' maxlength='20' value='".$_SESSION["name"]."'>
+                            <input name='name' type='text' id='name' maxlength='50' value='".$_SESSION["name"]."'>
                     </div> 
                     <div class='col-md-12'>
                             <label>Email:</label>
-                            <input name='email' type='text' id='email' maxlength='20' value='".$_SESSION["email"]."'>
+                            <input name='email' type='text' id='email' maxlength='50' value='".$_SESSION["email"]."'>
                     </div> 
                     <div class='col-md-12'>
                             <label>Nombre de usuario:</label>
-                            <input name='username' type='text' id='username' maxlength='20' value='".$_SESSION["username"]."'>
+                            <input name='username' type='text' id='username' maxlength='13' value='".$_SESSION["username"]."'>
                     </div> 
                     
                     <div class='col-md-4'>
                             <label for='password'>Contraseña nueva:</label>
-                            <input name='password' type='password' id='password' maxlength='20' value='".$_SESSION["password"]."'>
+                            <input name='password' type='password' id='password' maxlength='50' value='".$_SESSION["password"]."'>
                     </div> 
                     
                     <div class='col-md-4'>

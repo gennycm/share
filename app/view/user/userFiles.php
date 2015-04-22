@@ -20,7 +20,7 @@ class UserFiles{
 	public function uploadFileForm(){
 		$uploadFileForm = "<form action='../PostController/savePost' method='post' enctype='multipart/form-data'>
 				        <label>Comentario (120 caract)</label><br>
-				        <textarea name='description' rows='2' cols='63'></textarea><br><br>
+				        <textarea name='description' rows='2' cols='63' maxlength='120'></textarea><br><br>
 		                <div class='col-md-6'>
 			            	<input name='file' type='file'/>
 			            </div>

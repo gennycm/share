@@ -37,9 +37,14 @@ class Post extends ActiveRecord{
   }
 
   function listAllFriendsPosts(){
-    $query = "SELECT user.id_user,name,id_post,description,filepath
-              FROM user, ".$this->getTableName()."
-              WHERE  user.ID_user = ".$this->getTableName().".id_user and user.id_user != ".$_SESSION["id_user"];
+    $query = "select pTb.id_user, user.name, pTb.id_post, pTb.description, pTb.filepath from 
+              (select fTb.id_user, ".$this->getTableName().".id_post, ".$this->getTableName().".description, ".$this->getTableName().".filepath from 
+                (SELECT user.id_user from 
+                  (select id_user from friends where id_friend = ".$_SESSION["id_user"]." union 
+                    select id_friend from friends where id_user= ".$_SESSION["id_user"].") AS friendsTb 
+                      join user on friendsTb.id_user = user.id_user) as fTb 
+                        INNER JOIN ".$this->getTableName()." ON fTb.id_user = ".$this->getTableName().".id_user) as pTb 
+                          inner join user on pTb.id_user = user.id_user";
     $result = $this->executeQuery($query);
     $posts = Array();
     $post = Array();
