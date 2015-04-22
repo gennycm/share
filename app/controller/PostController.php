@@ -76,10 +76,12 @@ class PostController extends Controller{
                 readfile($destination_path.$file_name);
             }
             else{
-                echo "Archivo no encontrado";
-
+                $message = "Archivo no encontrado :c";
+                echo "<script type='text/javascript'>
+                            alert('$message');
+                            window.location.href = 'UserController/inicio';
+                     </script>";
             }
-            
     }
 
     public function getContentType($ext){

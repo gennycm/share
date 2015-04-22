@@ -55,7 +55,7 @@ class UserController extends Controller{
     }
     
     public function login(){
-        session_start();
+     //   session_start();
         session_destroy();
         $loginUserForm = new UserForm("login");
         echo $loginUserForm->userLogin();
