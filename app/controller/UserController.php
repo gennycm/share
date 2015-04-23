@@ -41,12 +41,18 @@ class UserController extends Controller{
         {
             $user = new User();
             unset($userData['password_b']);
+            $userData["password"] = md5($userData["password"]);
             $user->setAttributes($userData);
-            if($user!=null){
+            if($user!=null && !$user -> userExists()){
                $user->registerUser();
                header('Location: login');
             }else{
-                 $this->register();
+                $message = "Este usuario ya existe elije otro.";
+                 echo "<script type='text/javascript'>
+                            alert('$message');
+                            window.location.href = 'register';
+                      </script>";
+                 //$this->register();
             }
         }else{
             echo "You did not fill out the required fields :(";
@@ -63,6 +69,7 @@ class UserController extends Controller{
 
     public function loginUser(){
         $userData = $this->getParams();
+        $userData["password"] = md5($userData["password"]);
         if(isset($userData) && !empty($userData)){
             $appUser = new User();
             $systemUser = new SystemUser();

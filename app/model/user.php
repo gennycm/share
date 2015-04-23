@@ -24,6 +24,15 @@ class User extends ActiveRecord{
   	$this->save();
   }
 
+  function userExists(){
+    $query = "SELECT * from ".$this -> getTableName()." WHERE username = '".$this -> username ."'";
+    $result = $this->executeQuery($query);
+    if(count($result) > 0){
+      return true;
+    }
+    return false;
+  }
+
   function getUsersFriends(){
     $query = "SELECT ".$this->getTableName().".id_user, username, name from (select id_user from friends where id_friend = ".$_SESSION["id_user"]." union select id_friend from friends where id_user= ".$_SESSION["id_user"].") AS friendsTb join ".$this->getTableName()." on friendsTb.id_user = ".$this->getTableName().".id_user";
     $result = $this->executeQuery($query);
